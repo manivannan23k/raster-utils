@@ -161,14 +161,14 @@ const getValueAt = (x, y, layer, method) => {
     }
     switch(method){
         case "nearestNeighbour":
-            return Math.nearestNeighbour(layer.rasterData, yi, xi) || 0;
+            return window['Raster'].nearestNeighbour(layer.rasterData, yi, xi) || 0;
         case "bilinear":
-            return Math.bilinearInterpolation(layer.rasterData, yi, xi) || 0;
+            return window['Raster'].bilinearInterpolation(layer.rasterData, yi, xi) || 0;
         case "bicubic":
             try{
-                return Math.bicubicInterpolation(layer.rasterData, yi, xi) || 0;
+                return window['Raster'].bicubicInterpolation(layer.rasterData, yi, xi) || 0;
             }catch(e){
-                return Math.nearestNeighbour(layer.rasterData, yi, xi) || 0;
+                return window['Raster'].nearestNeighbour(layer.rasterData, yi, xi) || 0;
             }
     }
     
